@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\Technology;
+use App\Models\Technologyable;
 use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
@@ -20,6 +22,10 @@ class PostSeeder extends Seeder
             Image::factory(1)->create([
                 'imageable_id'  => $post->id,
                 'imageable_type' => Post::class
+            ]);
+            Technologyable::factory(1)->create([
+                'technologyable_id'  => $post->id,
+                'technologyable_type' => Post::class
             ]);
         }
     }

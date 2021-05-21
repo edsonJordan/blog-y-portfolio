@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+use App\Models\Technologyable;
+use App\Models\Technology;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TechnologyablesFactory extends Factory
+class TechnologyableFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Model::class;
+    protected $model = Technologyable::class;
 
     /**
      * Define the model's default state.
@@ -21,8 +22,9 @@ class TechnologyablesFactory extends Factory
      */
     public function definition()
     {
+      
         return [
-            //
+            'technology_id' => Technology::all()->random()->id
         ];
     }
 }

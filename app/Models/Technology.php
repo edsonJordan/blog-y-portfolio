@@ -9,12 +9,8 @@ class Technology extends Model
 {
     use HasFactory;
     
-    /* Relation Many to Many inverse Polimorphic  Post - Technologyables */
-    public function posts(){
-        return $this->morphedByMany('App\Models\Post', 'technologyable');        
-    }
-    /* Relation Many to Many inverse Polimorphic  Video - Technologyables */
-    public function videos(){
-        return $this->morphedByMany('App\Models\Video', 'technologyable');        
+    /* Relation One to Many Inverse */
+    public function user(){
+        return $this->belongsTo('App\Model\Technologyable');
     }
 }
