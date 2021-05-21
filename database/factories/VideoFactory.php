@@ -1,20 +1,17 @@
 <?php
 namespace Database\Factories;
-require 'vendor/autoload.php';
+//require 'vendor/autoload.php';
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Faker\Provider\Youtube;
-//use Provider
-use Illuminate\Support\Str;
 
+//use Provider
 class VideoFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
+    private $url = "https://www.googleapis.com/youtube/v3/videos";
+    private $api = "AIzaSyBplDOjfmXig5zMZmawAsC3j8BKqf6N9zc";
+    private $chanel = "UCKE0n8MjLe4GftpkUEkcmRw";
+    
     protected $model = Video::class;
 
     /**
@@ -28,6 +25,7 @@ class VideoFactory extends Factory
      /*  $url = \Faker\Factory::create();
       $url->addProvider(new \Faker\Provider\Youtube($url)); */
         $data = app('youlink')->youtubeChannelUri();
+       
         return [
             'name'  => $this->faker->unique()->sentence(),
             'description'  => $this->faker->text(250),

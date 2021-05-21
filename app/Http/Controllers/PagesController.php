@@ -3,10 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\Response;
 
 class PagesController extends Controller{
+    private $api_key = "AIzaSyBplDOjfmXig5zMZmawAsC3j8BKqf6N9zc";
+    private $chanel = "UCKE0n8MjLe4GftpkUEkcmRw";
     public function home(){
-        return view('dashboard');
+
+        /* $video = Http::get("https://www.googleapis.com/youtube/v3/search?key="
+         . $this->api_key . "&channelId=" 
+         . $this->chanel . "&part=snippet,id&order=date&maxResults=5"); */
+         $response  = Http::get('https://jsonplaceholder.typicode.com/users');
+            $videos = $response->json();
+            dd($videos);
+        //return view('dashboard', compact('videos'));
     }
     public function portfolio(){
         return view('dashboard');
