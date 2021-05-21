@@ -23,7 +23,8 @@ Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+
+    return   view('dashboard');
 })->name('dashboard');
 
 

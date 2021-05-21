@@ -15,8 +15,12 @@
         ['name'     => 'Blog',
         'route'     => route('blog'),
         'active'    => request()->routeIs('blog')],
+        ['name'     => 'Blog',
+        'route'     => route('blog'),
+        'active'    => request()->routeIs('blog')],
+        
     ]
-        ;
+        ;//
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
     
@@ -38,6 +42,10 @@
                         {{$nav_link['name']}}
                     </x-jet-nav-link>
                     @endforeach
+                    <x-jet-nav-link href="{{$nav_link['route']}}" :active="$nav_link['active']">
+                       
+                    </x-jet-nav-link>
+                    
                 </div>
             </div>
 

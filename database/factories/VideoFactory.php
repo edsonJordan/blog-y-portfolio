@@ -25,13 +25,13 @@ class VideoFactory extends Factory
     public function definition()
     {
       //$this->Provider->Youtube->youtubeUri()
-      $url = \Faker\Factory::create();
-      $url->addProvider(new \Faker\Provider\Youtube($url));
-        
+     /*  $url = \Faker\Factory::create();
+      $url->addProvider(new \Faker\Provider\Youtube($url)); */
+        $data = app('youlink')->youtubeChannelUri();
         return [
             'name'  => $this->faker->unique()->sentence(),
             'description'  => $this->faker->text(250),
-            'url' => $url->youtubeUri(),
+            'url' => $data,
             'status'    =>$this->faker->randomElement([1,2]),
             'user_id'       => User::all()->random()->id
         ];
