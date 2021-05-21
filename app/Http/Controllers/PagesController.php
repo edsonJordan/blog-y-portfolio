@@ -11,13 +11,12 @@ class PagesController extends Controller{
     private $chanel = "UCKE0n8MjLe4GftpkUEkcmRw";
     public function home(){
 
-        /* $video = Http::get("https://www.googleapis.com/youtube/v3/search?key="
+        $video = Http::get("https://www.googleapis.com/youtube/v3/search?key="
          . $this->api_key . "&channelId=" 
-         . $this->chanel . "&part=snippet,id&order=date&maxResults=5"); */
-         $response  = Http::get('https://jsonplaceholder.typicode.com/users');
-            $videos = $response->json();
-            dd($videos);
-        //return view('dashboard', compact('videos'));
+         . $this->chanel . "&part=snippet,id&order=date&maxResults=5");
+         
+        $videos = $video->json();
+        return view('pages.home', compact('videos'));
     }
     public function portfolio(){
         return view('dashboard');
