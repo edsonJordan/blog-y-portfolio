@@ -1,10 +1,11 @@
 <?php
-
 namespace Database\Factories;
-
+require 'vendor/autoload.php';
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Provider\Youtube;
+//use Provider
 use Illuminate\Support\Str;
 
 class VideoFactory extends Factory
@@ -23,12 +24,15 @@ class VideoFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->unique()->sentence();
+      //$this->Provider->Youtube->youtubeUri()
+      $url = \Faker\Factory::create();
+      $url->addProvider(new \Faker\Provider\Youtube($url));
+        
         return [
-            'name'  => $name,
-            'slug'  => Str::slug($name),
-            'extract'=> $this->faker->text(250),
-            'status'    =>$this->faker->randomElement([0,1]),
+            'name'  => $this->faker->unique()->sentence(),
+            'description'  => $this->faker->text(250),
+            'url' => $url->youtubeUri(),
+            'status'    =>$this->faker->randomElement([1,2]),
             'user_id'       => User::all()->random()->id
         ];
     }

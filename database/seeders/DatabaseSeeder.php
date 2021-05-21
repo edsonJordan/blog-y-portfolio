@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Technology;
+use App\Models\Video;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         Category::factory(4)->create();
         Technology::factory(8)->create();
+        Video::factory(10)->create();
         $this->call(PostSeeder::class);
         // \App\Models\User::factory(10)->create();
     }

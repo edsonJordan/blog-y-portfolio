@@ -17,8 +17,8 @@ class CreateVideosTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->text('url');
-            $table->enum('status', [0,1])->default(0);
+            $table->string('url');
+            $table->enum('status', [1,2])->default(1);
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
