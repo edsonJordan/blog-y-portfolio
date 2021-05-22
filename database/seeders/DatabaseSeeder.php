@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Technology;
 use App\Models\Video;
 use Illuminate\Database\Seeder;
@@ -16,13 +17,17 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   Storage::delete('posts');
+    {   
+        Storage::deleteDirectory('posts');
         Storage::makeDirectory('posts');
+
         $this->call(UserSeeder::class);
         Category::factory(4)->create();
-        Technology::factory(8)->create();
-        Video::factory(10)->create();
+        //Technology::factory(8)->create();
+        //Video::factory(10)->create();
+        $this->call(VideoSeeder::class);
         $this->call(PostSeeder::class);
+        $this->call(CommentSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }

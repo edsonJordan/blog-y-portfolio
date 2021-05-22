@@ -8,9 +8,7 @@
     </div>
 
     <div class="mt-6 text-gray-500">
-            @foreach ($videos as $item)
-                
-            @endforeach
+    
     </div>
 </div>
 

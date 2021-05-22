@@ -18,6 +18,7 @@ class PostSeeder extends Seeder
     public function run()
     {
         $posts = Post::factory(20)->create();
+        $technologies = Technology::factory(10)->create();
         foreach ($posts as $post) {
             Image::factory(1)->create([
                 'imageable_id'  => $post->id,
@@ -26,6 +27,13 @@ class PostSeeder extends Seeder
             Technologyable::factory(1)->create([
                 'technologyable_id'  => $post->id,
                 'technologyable_type' => Post::class
+            ]);
+               
+        }
+        foreach($technologies as $technology){
+            Technologyable::factory(1)->create([
+                'technologyable_id'  => $technology->id,
+                'technologyable_type' => Technology::class
             ]);
         }
     }

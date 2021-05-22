@@ -12,8 +12,8 @@ class Youtubelink {
     {
         $video = Http::get("https://www.googleapis.com/youtube/v3/search?key="
          . $this->api_key . "&channelId=" 
-         . $this->chanel . "&part=snippet,id&order=date&maxResults=5");
+         . $this->chanel . "&part=snippet,id&order=date&maxResults=7");
             $data=  $video->json();
-            return $data['items'][0]['id']['videoId'];
+            return $data;
     }
 } 

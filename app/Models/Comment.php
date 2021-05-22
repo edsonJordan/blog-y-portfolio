@@ -13,7 +13,6 @@ class Comment extends Model
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
-
     /* Relation One to Many Comments => Video , Post */
     public function commentable(){
         return $this->morphTo();
