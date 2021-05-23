@@ -22,14 +22,14 @@
                         <h2 class="mt-4 text-green-600">Commentarios</h2>
                         <ul>
                             @foreach ($comments as $comment)
-                                <li class="m-4">
-                                    <div class="flex">
+                                <li class="m-4 my-9">
+                                    <div class="flex ">
                                         <figure class="w-24" >
-                                            <img class="w-16 rounded-full object-cover object-center" src="{{$comment->user->profile_photo_url}}" alt="">
-                                            
+                                            <img class="w-14 rounded-full object-cover object-center" src="{{$comment->user->profile_photo_url}}" alt="">
                                         </figure>
                                         <span class="w-full">
-                                            {{$comment->message}}
+                                            <p class="text-green-600"> <b>	{{$comment->user->name}} </b> {{$comment->created_at->diffForHumans()}}  </p>
+                                            <span class="text-gray-600">{{$comment->message}}</span>
                                         </span>
                                     </div>
                                 </li>

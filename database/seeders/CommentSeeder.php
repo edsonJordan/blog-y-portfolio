@@ -19,19 +19,16 @@ class CommentSeeder extends Seeder
     {
         $posts = Post::all();
         $videos = Video::all();
-
         foreach ($posts as $post) {
-            Comment::factory(2)->create([
+            Comment::factory(20)->create([
                 'commentable_id'  => $post->id,
                 'commentable_type' => Post::class,
-                'user_id'       => User::all()->random()->id
             ]); 
         }
         foreach($videos as $video){
-            Comment::factory(4)->create([
+            Comment::factory(10)->create([
                 'commentable_id'  => $video->id,
                 'commentable_type' => Video::class,
-                'user_id'       => User::all()->random()->id
             ]);
         }
 
