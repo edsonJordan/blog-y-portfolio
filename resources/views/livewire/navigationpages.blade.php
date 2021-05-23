@@ -13,7 +13,7 @@
         'route'     => route('about'),
         'active'    => request()->routeIs('about')],
         ['name'     => 'Blog',
-        'route'     => route('blog'),
+        'route'     => route('blog.posts.index'),
         'active'    => request()->routeIs('blog')],
     ]
         ;
@@ -61,14 +61,10 @@
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               @foreach ($nav_links as $nav_link)
-              <x-jet-nav-link class="text-green-50  hover:text-green-50 block px-3 py-2  text-base font-medium" href="{{$nav_link['route']}}" :active="$nav_link['active']">
-                {{$nav_link['name']}}
-              </x-jet-nav-link> 
-                {{-- <a href="{{$nav_link['route']}}" :active="$nav_link['active']" class=" ">{{$nav_link['name']}}</a> --}}
-              {{--     <x-jet-nav-link href="{{$nav_link['route']}}" :active="$nav_link['active']">
-                      {{$nav_link['name']}}
-                    </x-jet-nav-link> --}}
-                    @endforeach
+                <x-jet-nav-link class="text-green-50  hover:text-green-50 block px-3 py-2  text-base font-medium" href="{{$nav_link['route']}}" :active="$nav_link['active']">
+                  {{$nav_link['name']}}
+                </x-jet-nav-link> 
+              @endforeach
             </div>
           </div>
         </div>
@@ -130,10 +126,11 @@
     <div class="sm:hidden " id="mobile-menu" x-show ="open" x-on:click.away="open =false">
       <div class="px-2 pt-2 pb-3 space-y-1">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="#" class="bg-green-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
-    {{--     @foreach ($categories as $category)
-        <a href="" class="text-green-300 hover:bg-green-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">{{$category->name}}</a>
-      @endforeach --}}
+        @foreach ($nav_links as $nav_link)
+        <x-jet-responsive-nav-link href="{{$nav_link['route']}}" :active="$nav_link['active']">
+            {{$nav_link['name']}}
+        </x-jet-responsive-nav-link>
+        @endforeach
       </div>
     </div>
   </nav>

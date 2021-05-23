@@ -10,15 +10,15 @@ class Post extends Model
     use HasFactory;
      /* Relation One to Many Inverse */
      public function user(){
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo(User::class);
     }
     /* Relation One to Many Inverse */
     public function category(){
-        return $this->belongsTo('App\Model\Category');
+        return $this->belongsTo(Category::class);
     }
     /* Relation One to One Polymorphic image - Post */
     public function image(){
-        return $this->morphOne('App\Models\Image', 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
     /* Relation One to Many Polymorphic Post - Comments */
     public function comments(){
@@ -26,6 +26,6 @@ class Post extends Model
     }
     /* Relatiion Many to Many Polymorphic Post - Technology */
     public function technologies(){
-        return $this->morphToMany('App\Models\Technology', 'technologyable');
+        return $this->morphToMany(Technology::class, 'technologyable');
     }
 }

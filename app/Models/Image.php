@@ -10,6 +10,8 @@ class Image extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    
     /* Relation Polymorphic */
     public function imageable()
     {

@@ -17,16 +17,20 @@ use Illuminate\Support\Facades\Route;
 /* Route::get('/', function () {
     return view('welcome');
 })->name('home'); */
+
+/* Routes Pages */
 Route::get('/', [PagesController::class, 'index'])->name('pages.index');
 Route::get('/portfolio', [PagesController::class, 'portfolio'])->name('portfolio');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 
 
+//Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
 
 
-Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
-Route::get('/blog/posts/', [BlogController::class, 'index'])->name('blog.posts.index');
+/* Routes Blogs */
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.posts.index');
+Route::get('/blog/posts/{post}', [BlogController::class, 'show'])->name('blog.posts.show');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

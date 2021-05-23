@@ -25,7 +25,8 @@ class TechnologyFactory extends Factory
         $name = $this->faker->unique()->word(20);
         return [
             'name' => $name,
-            'slug'  => Str::slug($name)
+            'slug'  => Str::slug($name),
+            'color' => $this->faker->randomElement(['red', 'yellow', 'green', 'blue', 'indigo', 'pink']),
         ];
     }
 }
