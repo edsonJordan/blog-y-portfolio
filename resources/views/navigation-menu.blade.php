@@ -1,27 +1,4 @@
-@php
-    $nav_links= [
-        ['name'     => 'Home',
-        'route'     => route('home'),
-        'active'    => request()->routeIs('home')],
-        ['name'     => 'Portfolio',
-        'route'     => route('portfolio'),
-        'active'    => request()->routeIs('portfolio')],
-        ['name'     => 'Contact',
-        'route'     => route('contact'),
-        'active'    => request()->routeIs('contact')],
-        ['name'     => 'About',
-        'route'     => route('about'),
-        'active'    => request()->routeIs('about')],
-        ['name'     => 'Blog',
-        'route'     => route('blog'),
-        'active'    => request()->routeIs('blog')],
-        ['name'     => 'Blog',
-        'route'     => route('blog'),
-        'active'    => request()->routeIs('blog')],
-        
-    ]
-        ;//
-@endphp
+
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
     
     <!-- Primary Navigation Menu -->
