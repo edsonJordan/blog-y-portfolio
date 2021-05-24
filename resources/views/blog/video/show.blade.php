@@ -3,20 +3,24 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
             <div class="mx-4 md:mx-0">
                 <h1 class="text-4xl font-bold text-green-500">
-                    {{$post->name}}
+                    {{$video->tittle}}
                 </h1>
                 <div class="text-lg text-gray-500 mb-4">
-                    {{$post->extract}}
+                    {{$video->extract}}
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {{-- Content Principal --}}
                     <div class="lg:col-span-2">
                         <figure>
-                            <img class="w-full h-80 object-cover object-center" src="{{Storage::url($post->image->url)}}" alt="">
+                            <iframe class="w-full " height="360px" src="https://www.youtube.com/embed/{{$video->url }}" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                            </iframe>
                         </figure>
                         <div class="text-base text-gray-500 mt-4">
-                            {{$post->body}}
+                            {{$video->body}}
                         </div>
                         {{-- Comments --}}
                         <h2 class="mt-4 text-green-600">Commentarios</h2>
@@ -38,13 +42,17 @@
                     </div>
                     {{-- Content relationship --}}
                     <aside>
-                        <h1 class="text-2xl font-bold text-green-600 mb-4">Más en {{$post->category->name}}</h1>
+                        <h1 class="text-2xl font-bold text-green-600 mb-4">Más de {{$video->user->name}} {{-- {{$video->category->name}} --}}</h1>
                         <ul>
                             @foreach ($similares as $similar)
                                     <li class="mb-4">
-                                        <a class="flex" href="{{route('blog.posts.show', $similar)}}">
-                                            <img class="w-32  object-cover object-center" src="{{Storage::url($similar->image->url)}}" alt="">
-                                            <span class="ml-2 text-gray-600" >{{$similar->name}}</span>
+                                        <a class="flex" href="{{route('blog.video.show', $similar)}}">
+                                            <img class="w-32  object-content object-center" src="https://i.ytimg.com/vi/{{$similar->url}}/default.jpg" alt="">
+                                            <span class="ml-2 text-gray-600" >  <b class="text-green-600"> {{$similar->name}} </b>
+                                            <p >{{$similar->user->name}}</p>
+                                            <p>{{$similar->created_at->diffForHumans()}}</p>
+                                            </span>
+                                      
                                         </a>
                                     </li>
                             @endforeach

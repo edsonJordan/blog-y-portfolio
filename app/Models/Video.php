@@ -11,7 +11,7 @@ class Video extends Model
 
      /* Relation inverse User - Video  'One to Many'  */
      public function user(){
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo(User::class);
     }
     /* Relation One to Many Polymorphic Video - Comments */
     public function comments(){
@@ -20,6 +20,6 @@ class Video extends Model
 
     /* Relatiion Many to Many Polymorphic Video - Technology */
     public function technologies(){
-        return $this->morphToMany('App\Models\Technology', 'technologyable');
+        return $this->morphToMany(Technology::class, 'technologyable');
     }
 }

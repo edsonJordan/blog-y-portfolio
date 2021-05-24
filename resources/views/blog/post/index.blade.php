@@ -13,7 +13,7 @@
                                        @endforeach  
                                    </div>
                                     <h1 class="text-4xl text-white leading-8 font-bold">
-                                       <a href="{{route('blog.posts.show', $post) }}">      
+                                       <a href="{{route('blog.post.show', $post) }}">      
                                            {{$post->name}}
                                        </a>
                                     </h1>

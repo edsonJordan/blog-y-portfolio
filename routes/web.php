@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -19,18 +21,28 @@ use Illuminate\Support\Facades\Route;
 })->name('home'); */
 
 /* Routes Pages */
-Route::get('/', [PagesController::class, 'index'])->name('pages.index');
-Route::get('/portfolio', [PagesController::class, 'portfolio'])->name('portfolio');
-Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
-Route::get('/about', [PagesController::class, 'about'])->name('about');
+Route::get('/', [PageController::class, 'index'])->name('page.index');
+Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/about', [PageController::class, 'about'])->name('about');
 
 
 //Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
 
 
 /* Routes Blogs */
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.posts.index');
-Route::get('/blog/posts/{post}', [BlogController::class, 'show'])->name('blog.posts.show');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+
+
+
+/* Routes Blog - Post */
+Route::get('/blog/post', [PostController::class, 'index'])->name('blog.post.index');
+Route::get('/blog/post/{post}', [PostController::class, 'show'])->name('blog.post.show');
+
+/* Routes Blog - Videos */
+Route::get('/blog/video', [VideoController::class, 'index'])->name('blog.video.index');
+Route::get('/blog/video/{video}', [VideoController::class, 'show'])->name('blog.video.show');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

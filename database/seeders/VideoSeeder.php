@@ -15,10 +15,14 @@ class VideoSeeder extends Seeder
      */
     public function run()
     {
+        //"https://www.youtube.com/watch?v="
+        // 'url' => "https://www.youtube.com/watch?v=".$dato['snippet']['videoId']['thumbnails']['default'],
         $datos = app('youlink')->GetLink();
         foreach ($datos['items'] as $dato) {
-            Video::factory(4)->create([
-                'url' => "https://www.youtube.com/watch?v=".$dato['id']['videoId'],
+            Video::factory(8)->create([
+                'tittle'  => $dato['snippet']['title'],
+                'description'  => $dato['snippet']['description'],
+                'url' => $dato['id']['videoId'],
             ]);
             //,
         }

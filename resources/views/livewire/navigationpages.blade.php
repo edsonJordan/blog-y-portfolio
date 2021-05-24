@@ -1,8 +1,8 @@
 @php
     $nav_links= [
         ['name'     => 'Home',
-        'route'     => route('pages.index'),
-        'active'    => request()->routeIs('pages.index')],
+        'route'     => route('page.index'),
+        'active'    => request()->routeIs('page.index')],
         ['name'     => 'Portfolio',
         'route'     => route('portfolio'),
         'active'    => request()->routeIs('portfolio')],
@@ -13,7 +13,7 @@
         'route'     => route('about'),
         'active'    => request()->routeIs('about')],
         ['name'     => 'Blog',
-        'route'     => route('blog.posts.index'),
+        'route'     => route('blog.index'),
         'active'    => request()->routeIs('blog')],
     ]
         ;

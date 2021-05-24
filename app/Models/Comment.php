@@ -11,7 +11,7 @@ class Comment extends Model
 
     /* Relation One to Many inverse */
     public function user(){
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
     /* Relation One to Many Comments => Video , Post */
     public function commentable(){
