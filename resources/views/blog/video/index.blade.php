@@ -6,10 +6,12 @@
                         @foreach ($videos as $video)
                             <article class=" bg-cover w-full h-60  bg-center" 
                             style=" background-image:url({{"https://i.ytimg.com/vi/$video->url/hqdefault.jpg"}})">
-                               <div class="w-full h-full px-8 flex flex-col justify-center">
-                                   <div class="">
-                                   </div>
-                                    
+                               <div class="w-full h-full px-8 flex flex-col justify-center hover:bg-green-800 hover:bg-opacity-100  text-bold opacity-80 hover:text-white">
+                                   <div class=" ">
+                                    <a class="h-full text-opacity-5" href="{{route('blog.video.show', $video) }}">      
+                                        {{$video->tittle}}
+                                    </a>
+                                   </div>                                    
                                </div>   
                                <h1 class="text-1xl text-gray-500 leading-8 font-bold">
                                 <a href="{{route('blog.video.show', $video) }}">      

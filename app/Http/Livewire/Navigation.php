@@ -9,8 +9,8 @@ class Navigation extends Component
 {
     public function render()
     {
-        $categories = Category::all();
+      
         //dd($categories[0]->name);
-        return view('livewire.navigation', compact('categories'));
+        return view('livewire.navigation');
     }
 }
