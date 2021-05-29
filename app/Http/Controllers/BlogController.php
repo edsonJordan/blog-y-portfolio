@@ -11,7 +11,7 @@ class BlogController extends Controller
     public function index()
     {
         $posts = Post::where('status', 2)->latest('id')->paginate(8);
-        return view('blog.post.index', compact('posts'));
+        return view('blog.index', compact('posts'));
     }
 
     

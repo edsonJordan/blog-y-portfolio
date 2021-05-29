@@ -38,6 +38,7 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 /* Routes Blog - Post */
 Route::get('/blog/post', [PostController::class, 'index'])->name('blog.post.index');
 Route::get('/blog/post/{post}', [PostController::class, 'show'])->name('blog.post.show');
+Route::get('/blog/post/category/{category}', [PostController::class, 'category'])->name('blog.post.category');
 
 /* Routes Blog - Videos */
 Route::get('/blog/video', [VideoController::class, 'index'])->name('blog.video.index');

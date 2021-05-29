@@ -30,8 +30,8 @@
                         <aside class="text-center">
                             <ul >
                                 @foreach ($categories as $category)
-                                    <li class="mb-4 " >
-                                        <a class="text-green-600" href="{{route('blog.post.category', $category)}}">
+                                    <li class="m-4" >
+                                        <a class="p-2 bg-green-600 text-white border-transparent rounded-md	 border-2 hover:border-green-600 hover:text-green-600 hover:bg-white block" href="{{route('blog.post.category', $category)}}">
                                             {{$category->name}}
                                         </a>
                                         
