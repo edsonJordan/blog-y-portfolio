@@ -10,7 +10,7 @@ class Technology extends Model
     use HasFactory;
     
     /* Relation One to Many Inverse */
-    public function user(){
-        return $this->belongsTo('App\Model\Technologyable');
+    public function technologyables(){
+        return $this->belongsTo(Technologyable::class);
     }
 }

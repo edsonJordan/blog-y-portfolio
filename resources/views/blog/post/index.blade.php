@@ -10,7 +10,7 @@
                                     <div class="">
                                         @foreach ($post->technologies as $technology)
                                                 <a class="inline-block px-3 h-6 text-white bg-{{$technology->color}}-600  rounded-full"
-                                                href="">{{ $technology->name }}</a>
+                                                href="{{route('blog.post.technology', $technology)}}">{{ $technology->name }}</a>
                                         @endforeach  
                                     </div>
                                         <h1 class="text-4xl text-white leading-8 font-bold">
@@ -39,7 +39,20 @@
                                 @endforeach
                             </ul>
                         </aside>
-
+                        
+                        <h1 class="text-2xl font-bold text-green-400 mb-4 text-center">Asuntos</h1>
+                        <aside class="text-center">
+                            <ul class="grid grid-cols-2" >
+                                @foreach ($technologies as $technology)
+                                    <li class="m-1" >
+                                        <a class="bg-{{$technology->color}}-600 text-white border-transparent rounded-md	 border-2 hover:border-{{$technology->color}}-600 hover:text-{{$technology->color}}-600 hover:bg-white block" href="{{route('blog.post.technology', $technology)}}">
+                                            {{$technology->name}}
+                                        </a>
+                                        
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </aside>
                     </div>
                     
                 </div>

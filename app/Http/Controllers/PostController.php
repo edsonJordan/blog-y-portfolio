@@ -7,15 +7,18 @@ use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Technology;
+use App\Models\Technologyable;
+use Illuminate\Database\Eloquent\Builder;
 
 class PostController extends Controller
 {
     // public function index()
     public function index(){
+        $technologies = Technology::all();
         $categories = Category::all();
         $posts = Post::where('status', 2)->latest('id')->paginate(8);
-    
-        return view('blog.post.index', compact('posts', 'categories') );
+        return view('blog.post.index', compact('posts', 'categories', 'technologies') );
     }
 
     public function show(Post $post){
@@ -36,5 +39,20 @@ class PostController extends Controller
                                     ->latest('id')    
                                     ->paginate(6);
         return view('blog.post.category', compact('category', 'posts'));
+    }
+    public function technology(Technology $technology){
+      //$commentable = $comment->commentable;
+      /*/* whereHas('posts', function (Builder $query) {
+        $query->where('status', 'like', 2);
+    })
+    -> */
+    //$technologies = Technologyable::all();
+    
+    $technologies = Technologyable::with(['posts' => function($query) {
+        $query->where('status', 2);
+        }])->paginate(10);
+   
+        $posts = Post::all();
+        return view('blog.post.technology', compact('technology', 'technologies', 'posts'));
     }
 }

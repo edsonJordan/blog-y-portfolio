@@ -10,18 +10,28 @@ class Technologyable extends Model
     use HasFactory;
 
      /* Relation Many to Many inverse Polimorphic  Post - Technologyables */
-     public function posts(){
-        return $this->morphedByMany('App\Models\Post', 'technologyable');        
+    /* public function posts(){
+        return $this->morphedByMany(Post::class, 'technologyable');        
+    } */
+    /* Relation Many to Many inverse Polimorphic  Video - Technologyables */
+    /* public function videos(){
+        return $this->morphedByMany(Video::class, 'technologyable');        
+    } */
+
+    /* Relation Many to Many inverse Polimorphic  Post - Technologyables */
+    public function posts(){
+        return $this->morphedByMany(Post::class, 'technologyable');        
     }
     /* Relation Many to Many inverse Polimorphic  Video - Technologyables */
     public function videos(){
-        return $this->morphedByMany('App\Models\Video', 'technologyable');        
+        return $this->morphedByMany(Video::class, 'technologyable');        
     }
 
     /* Relation One to Many Technologyable - technology */
     public function technologies(){
-        return $this->hasMany('App\Model\technology');
+        return $this->hasMany(Technology::class);
     }
+  
 
 
 }

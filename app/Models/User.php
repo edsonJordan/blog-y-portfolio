@@ -61,19 +61,19 @@ class User extends Authenticatable
 
     /* Relation One to Many User - Post */
     public function posts(){
-        return $this->hasMany('App\Models\Post');
+        return $this->hasMany(Post::class);
     }
      /* Relation One to Many User - Video */
     public function videos(){
-        return $this->hasMany('App\Models\Video');
+        return $this->hasMany(Video::class);
     }
     /* Relation One to One Polymorphic  User - image */
     public function image(){
-        return $this->morphOne('App\Models\Image', 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
     /* Relation One to Many Polymorphic User - comment */
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany(Comment::class);
     }
 }
