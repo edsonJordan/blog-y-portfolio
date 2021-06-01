@@ -50,7 +50,7 @@ class PostController extends Controller
     
     $technologies = Technologyable::with(['posts' => function($query) {
         $query->where('status', 2);
-        }])->paginate(10);
+        }])->get();
    
         $posts = Post::all();
         return view('blog.post.technology', compact('technology', 'technologies', 'posts'));

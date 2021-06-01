@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Technology;
+use App\Models\Technologyable;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
@@ -13,8 +15,10 @@ class VideoController extends Controller
     {
         $videos = Video::where('status', 2)->latest('id')->paginate(8);
         //$posts = Post::where('status', 2)->latest('id')->paginate(8);
-        return view('blog.video.index', compact('videos'));
+        $technologies = Technology::all();
+        return view('blog.video.index', compact('videos', 'technologies'));
     }
+
     public function show(Video $video){
         $similares = Video::where('status', 2)
                     ->where('user_id', '=', $video->user->id)
@@ -25,6 +29,14 @@ class VideoController extends Controller
                             ->where('commentable_type', Post::class)
                             ->latest('id')
                             ->get();
+        
         return view('blog.video.show', compact('video','similares', 'comments'));
     }
+    public function technology(Technology $technology){
+      $technologies = Technologyable::with(['videos' => function($query) {
+          $query->where('status', 2);
+          }])->get();
+     
+          return view('blog.video.technology', compact('technology', 'technologies'));
+      }
 }

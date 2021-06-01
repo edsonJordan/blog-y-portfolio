@@ -45,7 +45,7 @@ Route::get('/blog/post/technology/{technology}', [PostController::class, 'techno
 /* Routes Blog - Videos */
 Route::get('/blog/video', [VideoController::class, 'index'])->name('blog.video.index');
 Route::get('/blog/video/{video}', [VideoController::class, 'show'])->name('blog.video.show');
-
+Route::get('/blog/video/technology/{technology}', [VideoController::class, 'technology'])->name('blog.video.technology');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
