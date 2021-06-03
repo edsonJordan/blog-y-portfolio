@@ -18,8 +18,8 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        $posts = Post::factory(40)->create();
-        $technologies = Technology::factory(40)->create();
+        $posts = Post::factory(100)->create();
+        $technologies = Technology::factory(20)->create();
 
         foreach ($posts as $post) {
             Image::factory(1)->create([

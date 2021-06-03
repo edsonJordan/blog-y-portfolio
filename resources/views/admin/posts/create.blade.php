@@ -5,13 +5,86 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beatiful panel.</p>
+    <div class="card">
+        <div class="card-header">
+            {!! Form::open(['route' => 'admin.posts.store', 'autocomplete' => 'off']) !!}
+            <div class="form-group">
+                {!! Form::label('name', 'nombre') !!}
+                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del Post']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('slug', 'Slug') !!}
+                {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el slug del Post', 'readonly']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('category_id','Categoria') !!}
+                {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                 
+                <p class="font-weight-blod" >Tecnologias</p>
+            
+                    @foreach ($techonologies as $technology)
+                        <label class="mr-2" >
+                        {!! Form::checkbox('techonologies[]', $technology->id, null) !!}
+                        {{$technology->name}}
+                        </label>
+                    @endforeach                              
+            </div>
+            <div class="form-group">
+                <p class="font-weight-blod" >Estado</p>
+                <label for="">  
+                    {!! Form::radio('status', 1, true, ['class' => 'form-control']) !!}
+                    Borrador
+                </label>
+                <label class="ml-2" for="">  
+                    {!! Form::radio('status', 2, null,['class' => 'form-control']) !!}
+                    Publicado
+                </label>
+            </div>
+            <div class="form-group">
+                {!! Form::label('extract', 'Extracto:') !!}
+                {!! Form::textarea('extract', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('body', 'Cuerpo del Post:') !!}
+                {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+            </div>
+            {!! Form::submit('Crear Post', ['class' => 'btn btn-success']) !!}
+        </div>
+        <div class="card-body">
+
+        </div>
+        <div class="card-footer">
+
+        </div>
+    </div>
 @stop
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
 @section('js')
-    <script></script>
-@stop
+    <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}" ></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
+    <script>
+        $(document).ready( function() {
+            $("#name").stringToSlug({
+                setEvents: 'keyup keydown blur',
+                getPut: '#slug',
+                space: '-'
+            });
+        });
+
+        ClassicEditor
+        .create( document.querySelector( '#extract' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+        ClassicEditor
+        .create( document.querySelector( '#body' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script>
+
+
+@endsection
