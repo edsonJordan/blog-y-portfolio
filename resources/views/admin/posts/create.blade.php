@@ -73,9 +73,15 @@
                     <div class="form-group">
                         {!! Form::label('file', 'Imagen que se asignara al Post') !!}
                         {!! Form::file('file', ['class'=> 'form-control-file']) !!}
+                        <hr>
+                        @error('file')
+                            <small class="text-danger" >{{$message}}</small>
+                        @enderror
                     </div>
+                    
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae rerum mollitia quia veritatis eveniet adipisci tempore sunt alias reiciendis, facere est cum vitae tempora deleniti autem nihil sit eum. Modi?
                 </div>
+                
             </div>
 
             <div class="form-group">
