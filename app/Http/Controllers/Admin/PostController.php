@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Technology;
 use App\Http\Requests\StorePostRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -42,11 +43,12 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        $post = Post::create($request->all());
+        return Storage::put('posts', $request->file('file'));
+       /*  $post = Post::create($request->all());
         if($request->technologies){
             $post->technologies()->attach($request->technologies);
         }
-        return redirect()->route('admin.posts.edit', $post);
+        return redirect()->route('admin.posts.edit', $post); */
     }
 
     /**
