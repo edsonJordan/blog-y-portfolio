@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Technologyable extends Model
 {
+    protected $guarded = ['id', 'created_at', 'updated_at'];
     use HasFactory;
 
      /* Relation Many to Many inverse Polimorphic  Post - Technologyables */

@@ -9,7 +9,13 @@
                 @foreach ($technologies as $technology)
                         @foreach ($technology->posts as $data)
                         <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
-                            <img class="w-full h-72 object-cover object-center" src="{{Storage::url($data->image->url)}}" alt="">    
+                            @if($data->image)
+                            <img class="w-full h-72 object-cover object-center" src="{{Storage::url($data->image->url)}}" alt="">   
+                        @else
+                        <img class="w-full h-72 object-cover object-center" src="http://ProyectNext.test/storage/profile-photos/post-default.jpg" alt="">
+                        @endif
+
+                            
                             <div class="px-8 py-8">
                                 <h1 class="font-bold text-xl mb-2">
                                     <a href="{{route('blog.post.show', $data)}}">{{$data->name}}</a>                                    

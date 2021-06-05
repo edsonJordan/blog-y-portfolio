@@ -39,7 +39,7 @@
             
                     @foreach ($techonologies as $technology)
                         <label class="mr-2" >
-                        {!! Form::checkbox('techonologies[]', $technology->id, null) !!}
+                        {!! Form::checkbox('technologies[]', $technology->id, null) !!}
                         {{$technology->name}}
                         </label>
                     @endforeach    
@@ -63,6 +63,13 @@
                 <small class="text-danger" >{{$message}}</small>
             @enderror
             </div>
+            <div class="row">
+                <div class="col">
+                    
+                </div>
+                <div class="col"></div>
+            </div>
+
             <div class="form-group">
                 {!! Form::label('extract', 'Extracto:') !!}
                 {!! Form::textarea('extract', null, ['class' => 'form-control']) !!}

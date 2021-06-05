@@ -3,7 +3,12 @@
             <h1 class=" uppercase text-center font-bold text-3xl mb-4  text-green-600">{{$category->name}}</h1>
             @foreach ($posts as $post)
                     <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
-                        <img class="w-full h-72 object-cover object-center" src="{{Storage::url($post->image->url)}}" alt="">    
+                        @if($post->image)
+                        <img class="w-full h-72 object-cover object-center" src="{{Storage::url($post->image->url)}}" alt="">   
+                        @else
+                        <img class="w-full h-72 object-cover object-center" src="http://ProyectNext.test/storage/profile-photos/post-default.jpg" alt="">
+                        @endif
+                         
                         <div class="px-8 py-8">
                             <h1 class="font-bold text-xl mb-2">
                                 <a href="{{route('blog.post.show', $post)}}">{{$post->name}}</a>                                    

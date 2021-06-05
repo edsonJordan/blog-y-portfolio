@@ -13,7 +13,11 @@
                     {{-- Content Principal --}}
                     <div class="lg:col-span-2">
                         <figure>
+                            @if($post->image)
                             <img class="w-full h-80 object-cover object-center" src="{{Storage::url($post->image->url)}}" alt="">
+                            @else
+                            <img class="w-full h-80 object-cover object-center" src="http://ProyectNext.test/storage/profile-photos/post-default.jpg" alt="">
+                            @endif
                         </figure>
                         <div class="text-base text-gray-500 mt-4">
                             {{$post->body}}
@@ -43,7 +47,12 @@
                             @foreach ($similares as $similar)
                                     <li class="mb-4">
                                         <a class="flex" href="{{route('blog.post.show', $similar)}}">
+                                            @if($similar->image)
                                             <img class="w-32  object-cover object-center" src="{{Storage::url($similar->image->url)}}" alt="">
+                                            @else
+                                            <img class="w-32  object-cover object-center" src="http://ProyectNext.test/storage/profile-photos/post-default.jpg" alt="">
+                                            @endif
+                                            
                                             <span class="ml-2 text-gray-600" >  <b class="text-green-600"> {{$similar->name}} </b>
                                             <p >{{$similar->user->name}}</p>
                                             <p>{{$similar->created_at->diffForHumans()}}</p>

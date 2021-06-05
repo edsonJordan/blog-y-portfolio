@@ -5,7 +5,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
                     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:col-span-3 grid-cols-1 ">
                         @foreach ($posts as $post)
-                            <article class=" shadow-xl w-full h-80 bg-cover bg-center @if($loop->first) md:col-span-2  @endif"style="background-image:url({{ Storage::url($post->image->url) }})">
+                            <article class=" shadow-xl w-full h-80 bg-cover bg-center @if($loop->first) md:col-span-2  @endif"
+                                style="background-image:url(@if($post->image) {{ Storage::url($post->image->url) }} @else {{ Storage::url('profile-photos/post-default.jpg')}} @endif   )">
                                 <div class="w-full h-full px-8 flex flex-col justify-center">
                                     <div class="">
                                         @foreach ($post->technologies as $technology)
