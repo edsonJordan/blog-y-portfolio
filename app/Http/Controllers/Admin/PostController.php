@@ -77,6 +77,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post){
+        $this->authorize('author', $post);
         $categories = Category::pluck('name', 'id');
         $techonologies = Technology::all();
         return view('admin.posts.edit', compact('post', 'categories', 'techonologies'));
@@ -91,6 +92,7 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
+        $this->authorize('author', $post);
         $post->update($request->all());
         if ($request->file('file')) {
             $url =  Storage::put('posts', $request->file('file'));
@@ -117,8 +119,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
-    {
+    public function destroy(Post $post){
+        $this->authorize('author', $post);
         $post->delete();
         return redirect()->route('admin.posts.index')->with('info', 'El post se elimino con éxito');
     }
