@@ -14,7 +14,7 @@
                                 <a href="{{route('blog.post.show', $post)}}">{{$post->name}}</a>                                    
                             </h1>    
                             <div class="text-gray-700">
-                                {{$post->extract}}
+                                {!!$post->extract!!}
                             </div>
                         </div> 
 

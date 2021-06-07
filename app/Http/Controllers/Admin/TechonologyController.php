@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TechnologyCreateRequest;
+use App\Models\Technology;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 
 class TechonologyController extends Controller
@@ -12,9 +15,8 @@ class TechonologyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        return view('admin.technologies.index');
     }
 
     /**
@@ -24,7 +26,18 @@ class TechonologyController extends Controller
      */
     public function create()
     {
-        //
+        $colors= [
+            'gray'     => 'gray',
+            'red'   => 'red',
+            'yellow'  => 'yellow',
+            'green'  => 'green',
+            'blue'  => 'blue',
+            'indigo'  => 'indigo',
+            'purple'  => 'purple',
+            'pink'  => 'pink',
+            ]
+            ;
+        return view('admin.technologies.create', compact('colors'));
     }
 
     /**
@@ -33,9 +46,10 @@ class TechonologyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TechnologyCreateRequest $request)
     {
-        //
+        $technology = Technology::create($request->all());
+        return redirect()->route('admin.technologies.edit', $technology)->with('info', 'La tecnologia se creo correctamente');
     }
 
     /**
@@ -44,7 +58,7 @@ class TechonologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Technology $technology)
     {
         //
     }
@@ -55,9 +69,20 @@ class TechonologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Technology $technology)
     {
-        //
+        $colors= [
+            'gray'     => 'gray',
+            'red'   => 'red',
+            'yellow'  => 'yellow',
+            'green'  => 'green',
+            'blue'  => 'blue',
+            'indigo'  => 'indigo',
+            'purple'  => 'purple',
+            'pink'  => 'pink',
+            ]
+            ;
+        return view('admin.technologies.edit', compact('technology', 'colors'));
     }
 
     /**
@@ -67,9 +92,11 @@ class TechonologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Technology $technology)
     {
-        //
+        $technology->update($request->all());
+
+        return redirect()->route('admin.technologies.edit', $technology)->with('info', 'La tecnologia se edito correctamente');
     }
 
     /**
@@ -78,8 +105,9 @@ class TechonologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Technology $technology)
     {
-        //
+        $technology->delete($technology);
+        return redirect()->route('admin.technologies.index')->with('info', 'La categoria se elimino correctamente');
     }
 }

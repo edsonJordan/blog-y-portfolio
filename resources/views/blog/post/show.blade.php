@@ -6,7 +6,7 @@
                     {{$post->name}}
                 </h1>
                 <div class="text-lg text-gray-500 mb-4">
-                    {{$post->extract}}
+                    {!!$post->extract!!}
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -20,7 +20,7 @@
                             @endif
                         </figure>
                         <div class="text-base text-gray-500 mt-4">
-                            {{$post->body}}
+                            {!!  $post->body !!}
                         </div>
                         {{-- Comments --}}
                         <h2 class="mt-4 text-green-600">Commentarios</h2>

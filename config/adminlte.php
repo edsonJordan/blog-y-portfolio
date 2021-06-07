@@ -258,9 +258,9 @@ return [
             'icon' => 'fab fa-fw fa-buffer',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Tecnologias',
+            'route'  => 'admin.technologies.index',
+            'icon' => 'fas fa-fw fa-tags',
         ],
         ['header' => 'OPCIONES DE BLOG'],
         [
