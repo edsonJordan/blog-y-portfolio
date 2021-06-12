@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentaryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\VideoController;
@@ -46,6 +47,7 @@ Route::get('/blog/post/technology/{technology}', [PostController::class, 'techno
 Route::get('/blog/video', [VideoController::class, 'index'])->name('blog.video.index');
 Route::get('/blog/video/{video}', [VideoController::class, 'show'])->name('blog.video.show');
 Route::get('/blog/video/technology/{technology}', [VideoController::class, 'technology'])->name('blog.video.technology');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

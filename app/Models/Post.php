@@ -10,6 +10,9 @@ class Post extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
     use HasFactory;
+    public function getRouteKeyName(){
+        return 'slug';
+    }
      /* Relation One to Many Inverse */
      public function user(){
         return $this->belongsTo(User::class);
@@ -25,6 +28,9 @@ class Post extends Model
     /* Relation One to Many Polymorphic Post - Comments */
     public function comments(){
         return $this->morphMany(Comment::class, 'commentable');
+    }
+    public function comment(){
+        return $this->morphOne(Comment::class, 'commentable');
     }
     /* Relatiion Many to Many Polymorphic Post - Technology */
     public function technologies(){

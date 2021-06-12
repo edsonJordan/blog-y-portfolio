@@ -33,6 +33,7 @@ class VideoFactory extends Factory{
                 $videos['items'][0]['id']['videoId']
             } */
         return [
+            
             'status'    =>$this->faker->randomElement([1,2]),
             'user_id'       => User::all()->random()->id
         ];

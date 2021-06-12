@@ -14,6 +14,14 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
+        <style>
+            .icon-edit{
+                width: .4rem;
+                height: .4rem;
+               
+
+            }
+        </style>
         <x-jet-banner />
         <div class="min-h-screen ">
             @livewire('navigation')

@@ -16,6 +16,7 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('tittle');
+            $table->string('slug');
             $table->string('description');
             $table->string('url');           
             $table->enum('status', [1,2])->default(1);

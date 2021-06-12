@@ -26,7 +26,7 @@ class VideoController extends Controller
                     ->latest('id')
                     ->get();
         $comments = Comment::where('commentable_id', $video->id)
-                            ->where('commentable_type', Post::class)
+                            ->where('commentable_type', Video::class)
                             ->latest('id')
                             ->get();
         

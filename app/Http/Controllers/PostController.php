@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Technology;
 use App\Models\Technologyable;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 
 class PostController extends Controller
@@ -23,6 +24,8 @@ class PostController extends Controller
 
     public function show(Post $post){
         $this->authorize('published', $post);
+        $carbon = Carbon::now();
+        $minute = $carbon->minute;
         $similares = Post::where('category_id', $post->category_id)
                     ->where('status', 2)
                     ->where('id', '!=', $post->id)
@@ -32,7 +35,7 @@ class PostController extends Controller
                             ->where('commentable_type', Post::class)
                             ->latest('id')
                             ->get();
-        return view('blog.post.show', compact('post', 'similares', 'comments'));
+        return view('blog.post.show', compact('post', 'similares', 'comments', 'minute'));
     }
     public function category(Category $category){
         $posts = Post::where('category_id', $category->id)
