@@ -19,7 +19,7 @@ class VideoSeeder extends Seeder
         // 'url' => "https://www.youtube.com/watch?v=".$dato['snippet']['videoId']['thumbnails']['default'],
         $datos = app('youlink')->GetLink();
         foreach ($datos['items'] as $dato) {
-            Video::factory(8)->create([
+            Video::factory(1)->create([
                 'slug'  => Str::slug($dato['snippet']['title']),
                 'tittle'  => $dato['snippet']['title'],
                 'description'  => $dato['snippet']['description'],

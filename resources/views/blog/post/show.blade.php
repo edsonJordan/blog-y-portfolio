@@ -38,12 +38,16 @@
                                                     {{ Form::hidden('commentable_id', $post->id) }}
                                                     {{ Form::hidden('commentable_type', $post->comment->commentable_type) }}
                                                     {!! Form::textarea('message', null, ['class' => 'bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500 y-72', ' rows' => 1, 'placeholder' => "Ingresar Comentario"]) !!}
-                                                  </div>                                                                                                                                         
+                                                  </div>
+                                                  @error('message')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror                                                                                                                                         
                                         </p>                                        
                                         {!! Form::submit('Enviar', ['class' => 'float-right shadow bg-green-500 hover:bg-green-700 cursor-pointer	 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded']) !!}                                         
                                         {!! Form::close() !!}  
-                                    </span>
-                                </div>                               
+                                    </span>  
+                                </div>  
+                                                                    
                             </li>
                             @endauth
                             @foreach ($comments as $comment)
@@ -66,12 +70,15 @@
                                                                         {{ Form::hidden('commentable_id', $post->id) }}
                                                                         {{ Form::hidden('commentable_type', $post->comment->commentable_type) }}
                                                                         {!! Form::textarea('message', $comment->message, ['class' => 'bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500 y-72', ' rows' => 1, 'placeholder' => "Ingresar Comentario"]) !!}
-                                                                    </div>                                                                                                                                         
+                                                                    </div>
+                                                                    @error('message')
+                                                                    <span class="text-danger">{{$message}}</span>
+                                                                    @enderror                                                                                                                                         
                                                             </p>                                                            
                                                             {!! Form::submit('Actualizar', ['class' => 'float-right shadow bg-green-500 hover:bg-green-700 cursor-pointer	 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-2 rounded']) !!}                                         
-                                                        
                                                             {!! Form::close() !!}  
                                                         </span>
+                                                           
                                                     <button  x-show ="text"  x-on:click="edit = true;text=false" class="float-right  bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded focus:outline-none">
                                                     Editar
                                                 </button>
@@ -106,8 +113,6 @@
                                             <p>{{$similar->created_at->diffForHumans()}}</p>
                                             </span>
 
-                                           {{--  <p class="text-green-600"> <b>	{{$comment->user->name}} </b> {{$comment->created_at->diffForHumans()}}  </p>
-                                            <span class="text-gray-600">{{$comment->message}}</span> --}}
                                         </a>
                                     </li>
                             @endforeach

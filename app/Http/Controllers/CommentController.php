@@ -13,6 +13,9 @@ class CommentController extends Controller
 
     public function store(Request $request, Post $post)
     {
+        $request->validate([
+            'message' => 'required'
+        ]);
         $this->authorize('published', $post);
         $carbon = Carbon::now();
         $minute = $carbon->minute;
@@ -31,6 +34,9 @@ class CommentController extends Controller
         return redirect()->route('blog.post.show', compact('post', 'similares', 'comments', 'minute'));
     }
     public function update(Request $request,  Post $post, Comment $comment){
+        $request->validate([
+            'message' => 'required'
+        ]);
         $this->authorize('published', $post);
         $carbon = Carbon::now();
         $minute = $carbon->minute;

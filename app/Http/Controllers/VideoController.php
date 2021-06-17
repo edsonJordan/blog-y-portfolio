@@ -29,7 +29,6 @@ class VideoController extends Controller
                             ->where('commentable_type', Video::class)
                             ->latest('id')
                             ->get();
-        
         return view('blog.video.show', compact('video','similares', 'comments'));
     }
     public function technology(Technology $technology){

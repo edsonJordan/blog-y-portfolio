@@ -273,6 +273,17 @@ return [
             'route'        => 'admin.posts.create',
             'icon'      => 'fas fa-fw fa-file'
         ],
+        ['header' => 'OPCIONES DE VIDEOS'],
+        [
+            'text'       => 'Lista de videos',
+            'route'        => 'admin.videos.index',
+            'icon'      => 'fas fa-fw fa-clipboard'
+        ],
+        [
+            'text'       => 'Ingresar nuevos videos',
+            'route'        => 'admin.videos.create',
+            'icon'      => 'fas fa-fw fa-file'
+        ],
         
     ],
 
