@@ -16,10 +16,7 @@
                     @foreach ($videos as $video)
                         <tr>
                             <td>{{$video->id}}</td>
-                            <td>{{$video->tittle}}</td>
-                            <td width="10px" >
-                                <a class="btn btn-warning btn-sm" href="{{route('admin.videos.edit', $video)}}">Editar</a>
-                            </td>
+                            <td>{{$video->tittle}}</td>                           
                             <td width="10px" >
                                 <form action="{{route('admin.videos.destroy', $video)}}" method="POST">
                                     @csrf

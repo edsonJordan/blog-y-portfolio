@@ -21,7 +21,7 @@
                             </iframe>
                         </figure>
                         <div class="text-base text-gray-500 mt-4">
-                            {{$video->body}}
+                            {!! $video->description !!}
                         </div>
                         
                         {{-- Comments --}}
@@ -38,7 +38,7 @@
                                         <p class="text-green-600">                                                
                                                 <div class="md:w-full">                                                   
                                                     {{ Form::hidden('commentable_id', $video->id) }}
-                                                    {{ Form::hidden('commentable_type', $video->comment->commentable_type) }}{{--  --}}
+                                                    {{ Form::hidden('commentable_type',"App\Models\Video"  /* $video->comment->commentable_type */) }}
                                                     {!! Form::textarea('message', null, ['class' => 'bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500 y-72', ' rows' => 1, 'placeholder' => "Ingresar Comentario"]) !!}
                                                   </div>   
                                                 @error('message')
