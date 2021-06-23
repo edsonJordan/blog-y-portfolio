@@ -235,8 +235,6 @@ return [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
-        // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
@@ -250,6 +248,11 @@ return [
             'text'        => 'Dashboard',
             'route'         => 'admin.home',
             'icon'        => 'fas fa-fw fa-tachometer-alt',
+        ],
+        [
+            'text'        => 'Usuarios',
+            'route'         => 'admin.users.index',
+            'icon'        => 'fas fa-fw fa-users',
         ],
         ['header' => 'Administrador'],
         [

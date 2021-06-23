@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TechonologyController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VideoController;
 
 use App\Http\Controllers\CommentController;
@@ -16,6 +17,9 @@ Route::get('', [HomeController::class, 'index'])->name('admin.home');
 Route::resource('categories', CategoryController::class)->names('admin.categories');
 Route::resource('technologies', TechonologyController::class)->names('admin.technologies');
 Route::resource('videos', VideoController::class)->names('admin.videos');
+Route::resource('posts', PostController::class)->names('admin.posts');
+Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('admin.users');
+
 
 Route::post('comments/{post}', [CommentController::class, 'store'])->name('admin.comments.store');
 Route::post('comments/{post}/{comment}/edit', [CommentController::class, 'update'])->name('admin.comments.update');
@@ -25,4 +29,3 @@ Route::post('comments/video/{video}/{comment}/edit', [CommentController::class, 
 
 
 
-Route::resource('posts', PostController::class)->names('admin.posts');
