@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'Blog-edson'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_87FD57CBEE9C4223A9C87B1916BB3EC7 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7AB1E500A54E4B3DBD45DE555541560B }}
           package: .
